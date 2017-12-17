@@ -1,0 +1,662 @@
+ GeeksforGeeks 
+A computer science portal for geeks
+
+Practice GATE CS PlacementsVideos Contribute
+
+Login/Register
+
+Skip to content
+
+MenuAlgo ▼- Analysis of Algorithms- Topicwise ►-- Searching Algorithms-- Sorting Algorithms-- Graph Algorithms-- Bit Algorithms-- Pattern Searching-- Geometric Algorithms-- Mathematical Algorithms-- Randomized Algorithms-- Game Theory- Algorithm Paradigms ►-- Greedy Algorithms-- Dynamic Programming-- Divide and Conquer-- Backtracking-- Branch & Bound- All AlgorithmsDS  ▼
+
+- Array- LinkedList- Stack- Queue- Tree based DS ►-- Binary Tree-- Binary Search Tree-- Heap- Hashing- Graph- Advanced Data Structure- Matrix- Strings- All Data StructuresLanguages ▼- C- C++- Java- Python- SQL- Program OutputInterview  ▼- Company Prep- Top Topics- Practice Company Questions- Interview Experiences- Experienced Interviews- Internship Interviews- Competitive Programming- Design Patterns- Multiple Choice QuizzesStudents  ▼- Campus Ambassador Program- Geek of the Month- Placement Course- Project- Competitive Programming- Testimonials- Geek on the Top- Careers- Internship- School ProgrammingGATE ▼- GATE CS Corner- GATE Notes- Last Minute Notes- Official Papers- Gate 2018 Important Dates and LinksCS Subjects ▼- Operating Systems- DBMS- Computer Networks- Compiler Design- Web Technology- Computer Organization & Architecture- Digital Electronics- Engg. Mathematics- Theory of Computation- Advanced Topics- What’s Difference?Quizzes ▼- Languages ►-- C-- C++-- Java-- Python- CS Subjectwise ►-- Data Structures-- Algorithms-- Operating Systems-- DBMS-- Compiler Design-- Computer Networks-- Theory of Computation-- Computer Organization-- Software Engineering- HTML & XML- Engg. Mathematics- AptitudeGBlogPuzzlesWhat’s New?
+
+▲
+
+Reading and Writing to text files in Python
+
+1.6
+
+Python provides inbuilt functions for creating, writing and reading files. There are two types of files that can be handled in python, normal text files and binary files (written in binary language,0s and 1s).
+
+Text files: In this type of file, Each line of text is terminated with a special character called EOL (End of Line), which is the new line character (‘\n’) in python by default.Binary files: In this type of file, there is no terminator for a line and the data is stored after converting it into machine understandable binary language.
+
+In this article, we will be focusing on opening, closing, reading and writing data in a text file.
+
+File Access Modes
+
+Access modes govern the type of operations possible in the opened file. It refers to how the file will be used once its opened. These modes also define the location of the File Handle in the file. File handle is like a cursor, which defines from where the data has to be read or written in the file. There are 6 access modes in python.
+
+Read Only (‘r’) : Open text file for reading. The handle is positioned at the beginning of the file. If the file does not exists, raises I/O error. This is also the default mode in which file is opened.Read and Write (‘r+’) :Open the file for reading and writing. The handle is positioned at the beginning of the file. Raises I/O error if the file does not exists.Write Only (‘w’) : Open the file for writing. For existing file, the data is truncated and over-written. The handle is positioned at the beginning of the file. Creates the file if the file does not exists.Write and Read (‘w+’) : Open the file for reading and writing. For existing file, data is truncated and over-written. The handle is positioned at the beginning of the file.Append Only (‘a’) : Open the file for writing. The file is created if it does not exist. The handle is positioned at the end of the file. The data being written will be inserted at the end, after the existing data.Append and Read (‘a+’) : Open the file for reading and writing. The file is created if it does not exist. The handle is positioned at the end of the file. The data being written will be inserted at the end, after the existing data.
+
+Opening a File
+
+It is done using the open() function. No module is required to be imported for this function.
+
+File_object = open(r"File_Name","Access_Mode")
+
+The file should exist in the same directory as the python program file else, full address of the file should be written on place of filename.
+Note: The r is placed before filename to prevent the characters in filename string to be treated as special character. For example, if there is \temp in the file address, then \t is treated as the tab character and error is raised of invalid address. The r makes the string raw, that is, it tells that the string is without any special characters. The r can be ignored if the file is in same directory and address is not being placed.
+
+# Open function to open the file "MyFile1.txt" 
+
+# (same directory) in append mode and
+
+file1 = open("MyFile.txt","a")
+
+ 
+
+# store its reference in the variable file1 
+
+# and "MyFile2.txt" in D:\Text in file2
+
+file2 = open(r"D:\Text\MyFile2.txt","w+")
+
+Run on IDE
+
+Here, file1 is created as object for MyFile1 and file2 as object for MyFile2
+
+Closing a file
+
+close() function closes the file and frees the memory space acquired by that file. It is used at the time when the file is no longer needed or if it is to be opened in a different file mode.
+
+File_object.close()
+
+# Opening and Closing a file "MyFile.txt"
+
+# for object name file1.
+
+file1 = open("MyFile.txt","a")
+
+file1.close()
+
+Run on IDE
+
+Writing to a file
+
+There are two ways to write in a file.
+
+write() : Inserts the string str1 in a single line in the text file.File_object.write(str1)writelines() : For a list of string elements, each string is inserted in the text file.Used to insert multiple strings at a single time.File_object.writelines(L) for L = [str1, str2, str3] 
+
+Reading from a file
+
+There are three ways to read data from a text file.
+
+read() : Returns the read bytes in form of a string. Reads n bytes, if no n specified, reads the entire file.File_object.read([n])readline() : Reads a line of the file and returns in form of a string.For specified n, reads at most n bytes. However, does not reads more than one line, even if n exceeds the length of the line.File_object.readline([n])readlines() : Reads all the lines and return them as each line a string element in a list. File_object.readlines()
+
+Note: ‘\n’ is treated as a special character of two bytes
+
+# Program to show various ways to read and
+
+# write data in a file.
+
+file1 = open("myfile.txt","w")
+
+L = ["This is Delhi \n","This is Paris \n","This is London \n"] 
+
+ 
+
+# \n is placed to indicate EOL (End of Line)
+
+file1.write("Hello \n")
+
+file1.writelines(L)
+
+file1.close() #to change file access modes
+
+ 
+
+file1 = open("myfile.txt","r+") 
+
+ 
+
+print "Output of Read function is "
+
+print file1.read()
+
+print
+
+ 
+
+# seek(n) takes the file handle to the nth
+
+# bite from the beginning.
+
+file1.seek(0) 
+
+ 
+
+print "Output of Readline function is "
+
+print file1.readline()
+
+print
+
+ 
+
+file1.seek(0)
+
+ 
+
+# To show difference between read and readline
+
+print "Output of Read(9) function is "
+
+print file1.read(9)
+
+print
+
+ 
+
+file1.seek(0)
+
+ 
+
+print "Output of Readline(9) function is "
+
+print file1.readline(9)
+
+ 
+
+file1.seek(0)
+
+# readlines function
+
+print "Output of Readlines function is "
+
+print file1.readlines()
+
+print
+
+file1.close()
+
+Run on IDE
+
+Output:
+
+Output of Read function is Hello This is Delhi This is Paris This is London Output of Readline function is Hello Output of Read(9) function is Hello Th Output of Readline(9) function is Hello Output of Readlines function is ['Hello \n', 'This is Delhi \n', 'This is Paris \n', 'This is London \n'] 
+
+Appending to a file
+
+# Python program to illustrate
+
+# Append vs write mode
+
+file1 = open("myfile.txt","w")
+
+L = ["This is Delhi \n","This is Paris \n","This is London \n"] 
+
+file1.close()
+
+ 
+
+# Append-adds at last
+
+file1 = open("myfile.txt","a")#append mode
+
+file1.write("Today \n")
+
+file1.close()
+
+ 
+
+file1 = open("myfile.txt","r")
+
+print "Output of Readlines after appending"
+
+print file1.readlines()
+
+print
+
+file1.close()
+
+ 
+
+# Write-Overwrites
+
+file1 = open("myfile.txt","w")#write mode
+
+file1.write("Tomorrow \n")
+
+file1.close()
+
+ 
+
+file1 = open("myfile.txt","r")
+
+print "Output of Readlines after writing"
+
+print file1.readlines()
+
+print
+
+file1.close()
+
+Run on IDE
+
+Output:
+
+Output of Readlines after appending ['This is Delhi \n', 'This is Paris \n', 'This is London \n', 'Today \n'] Output of Readlines after writing ['Tomorrow \n'] 
+
+Related Article : 
+File Objects in Python
+
+This article is contributed by Harshit Agrawal. If you like GeeksforGeeks and would like to contribute, you can also write an article using contribute.geeksforgeeks.org or mail your article to contribute@geeksforgeeks.org. See your article appearing on the GeeksforGeeks main page and help other Geeks.
+
+Please write comments if you find anything incorrect, or you want to share more information about the topic discussed above.
+
+GATE CS Corner    Company Wise Coding Practice
+
+Python
+
+Technical Scripter
+
+Login to Improve this Article
+
+Please write to us at contribute@geeksforgeeks.org to report any issue with the above content.
+
+Recommended Posts:
+
+
+File Handling in PythonFile Objects in PythonUsing else conditional statement with for loop in pythonWorking with PDF files in PythonGET and POST requests using Pythonas_integer_ratio() in Python for reduced fraction of a given rationalzip() in PythonOutput of Python Programs | Set 22 (Loops)Python String isnumeric() and its applicationMap function and Dictionary in Python to sum ASCII values
+
+Post navigation
+
+<< Previous PostNext Post >>
+
+(Login to Rate) 
+
+1.6Average Difficulty : 1.6/5.0
+Based on 3 vote(s)
+
+    
+
+
+
+ Add to TODO List 
+ Mark as DONE
+
+
+
+
+
+Writing code in comment? Please use ide.geeksforgeeks.org, generate link and share the link here.
+
+
+Share this post!
+
+Trending ContentLongest Common SubsequenceBreadth First Traversal or BFSSchool ProgrammingLongest Repeated SubsequenceLongest Palindromic SubsequenceDetect a negative cycle in a Graph | (Bellman Ford)0-1 Knapsack ProblemGATE CS NotesDepth First Traversal or DFS for a GraphReverse a linked list
+
+Most Visited PostsTop 10 Algorithms and Data Structures for Competitive ProgrammingTop 10 algorithms in Interview QuestionsHow to begin with Competitive Programming?Step by Step Guide for Placement PreparationHow to prepare for ACM-ICPC?Insertion Sort, Binary Search, QuickSort, MergeSort, HeapSort
+
+Popular CategoriesInterview ExperiencesAdvanced Data StructuresDynamic ProgrammingGreedy AlgorithmsBacktrackingPattern SearchingDivide & ConquerGeometric AlgorithmsSearchingSortingAnalysis of AlgorithmsMathematical AlgorithmsRandomized AlgorithmsRecursionGame TheoryStatistical Algorithms
+
+ads by BSA
+
+Tags
+
+Advanced Data Structure Amazon Aptitude Aptitude Arrays Articles Bit Magic C C C++ C++ Quiz Computer Networks CPP-Library C Quiz Data Structures Data Structures DBMS Dynamic Programming Experienced GBlogGeometric Graph Hash Internship Interview ExperiencesJava Linked Lists MathematicalMatrix Microsoft number-digits Program Output Project Puzzles Python QA - Placement Quizzes QA - Placement Quizzes School ProgrammingSearching series Sorting STL StringsTechnical Scripter Trees
+
+Advertise Here
+
+@geeksforgeeks, Some rights reserved        Contact Us!        About Us!           Careers!          Privacy Policy     ￼￼ ￼ ￼ ￼
+
+
+
+￼
+
+
+Reading and Writing Files in Python
+
+Overview
+
+
+When you’re working with Python, you don’t need to import a library in order to read and write files. It’s handled natively in the language, albeit in a unique manner.
+
+The first thing you’ll need to do is use Python’s built-in open function to get a file object. 
+
+The open function opens a file. It’s simple. 
+
+When you use the open function, it returns something called a file object. File objects contain methods and attributes that can be used to collect information about the file you opened. They can also be used to manipulate said file.
+
+For example, the mode attribute of a file object tells you which mode a file was opened in. And the nameattribute tells you the name of the file that the file object has opened. 
+
+You must understand that a file andfile object are two wholly separate – yet related – things.
+
+ 
+
+File Types
+
+
+What you may know as a file is slightly different in Python. 
+
+In Windows, for example, a file can be any item manipulated, edited or created by the user/OS. That means files can be images, text documents, executables, and much more. Most files are organized by keeping them in individual folders. 
+
+In Python, a file is categorized as either text or binary, and the difference between the two file types is important. 
+
+Text files are structured as a sequence of lines, where each line includes a sequence of characters. This is what you know as code or syntax. 
+
+Each line is terminated with a special character, called the EOL or End of Line character. There are several types, but the most common is the comma {,} or newline character. It ends the current line and tells the interpreter a new one has begun. 
+
+A backslash character can also be used, and it tells the interpreter that the next character – following the slash – should be treated as a new line. This character is useful when you don’t want to start a new line in the text itself but in the code. 
+
+A binary file is any type of file that is not a text file. Because of their nature, binary files can only be processed by an application that know or understand the file’s structure. In other words, they must be applications that can read and interpret binary.
+
+Open ( ) Function
+
+
+In order to open a file for writing or use in Python, you must rely on the built-in open () function. 
+
+As explained above, open ( ) will return a file object, so it is most commonly used with two arguments.  
+
+An argument is nothing more than a value that has been provided to a function, which is relayed when you call it. So, for instance, if we declare the name of a file as “Test File,” that name would be considered an argument. 
+
+The syntax to open a file object in Python is: 
+
+file_object  = open(“filename”, “mode”) where file_object is the variable to add the file object. 
+
+The second argument you see – mode– tells the interpreter and developer which way the file will be used.
+
+Mode
+
+
+Including a mode argument is optional because a default value of ‘r’ will be assumed if it is omitted. The ‘r’ value stands for read mode, which is just one of many. 
+
+The modes are: 
+
+‘r’ – Read mode which is used when the file is only being read ‘w’ – Write mode which is used to edit and write new information to the file (any existing files with the same name will be erased when this mode is activated) ‘a’ – Appending mode, which is used to add new data to the end of the file; that is new information is automatically amended to the end ‘r+’ – Special read and write mode, which is used to handle both actions when working with a file 
+
+So, let’s take a look at a quick example. 
+
+F = open(“workfile”,”w”)  Print f 
+
+This snippet opens the file named “workfile” in writing mode so that we can make changes to it. The current information stored within the file is also displayed – or printed – for us to view. 
+
+Once this has been done, you can move on to call the objects functions. The two most common functions are read and write.
+
+Create a text file
+
+
+To get more familiar with text files in Python, let’s create our own and do some additional exercises. 
+
+Using a simple text editor, let’s create a file. You can name it anything you like, and it’s better to use something you’ll identify with. 
+
+For the purpose of this tutorial, however, we are going to call it “testfile.txt”. 
+
+Just create the file and leave it blank. 
+
+To manipulate the file, write the following in your Python environment (you can copy and paste if you’d like):
+
+file = open(“testfile.txt”,”w”)    file.write(“Hello World”)  file.write(“This is our new text file”)  file.write(“and this is another line.”)  file.write(“Why? Because we can.”)    file.close() 
+
+
+Naturally, if you open the text file – or look at it – using Python you will see only the text we told the interpreter to add.
+
+$ cat testfile.txt  Hello World  This is our new text file  and this is another line.  Why? Because we can.
+
+
+Reading a Text File in Python
+
+
+There are actually a number of ways to read a text file in Python, not just one. 
+
+If you need to extract a string that contains all characters in the file, you can use the following method: 
+
+file.read() 
+
+
+The full code to work with this method will look something like this: 
+
+file = open(“testfile.text”, “r”)  print file.read() 
+
+
+The output of that command will display all the text inside the file, the same text we told the interpreter to add earlier. There’s no need to write it all out again, but if you must know, everything will be shown except for the “$ cat testfile.txt” line. 
+
+ 
+
+Another way to read a file is to call a certain number of characters.  
+
+For example, with the following code the interpreter will read the first five characters of stored data and return it as a string: 
+
+file = open(“testfile.txt”, “r”)   print file.read(5) 
+
+
+Notice how we’re using the same file.read() method, only this time we specify the number of characters to process? 
+
+The output for this will look like: 
+
+Hello 
+
+ 
+
+If you want to read a file line by line – as opposed to pulling the content of the entire file at once – then you use the readline() function. 
+
+Why would you use something like this? 
+
+Let’s say you only want to see the first line of the file – or the third. You would execute the readline() function as many times as possible to get the data you were looking for. 
+
+Each time you run the method, it will return a string of characters that contains a single line of information from the file. 
+
+file = open(“testfile.txt”, “r”)  print file.readline(): 
+
+
+This would return the first line of the file, like so: 
+
+Hello World 
+
+
+If we wanted to return only the third line in the file, we would use this: 
+
+file = open(“testfile.txt”, “r”)  print file.readline(3): 
+
+
+But what if we wanted to return every line in the file, properly separated? You would use the same function, only in a new form. This is called the file.readlines() function. 
+
+file = open(“testfile.txt”, “r”)  print file.readlines() 
+
+
+The output you would get from this is: 
+
+[‘Hello World’, ‘This is our new text file’, ‘and this is another line.’, ‘Why? Because we can.’] 
+
+
+Notice how each line is separated accordingly? Note that this is not the ideal way to show users the content in a file. But it’s great when you want to collect information quickly for personal use during development or recall.
+
+Looping over a file object
+
+
+When you want to read – or return – all the lines from a file in a more memory efficient, and fast manner, you can use the loop over method. The advantage to using this method is that the related code is both simple and easy to read. 
+
+file = open(“testfile.txt”, “r”)  for line in file:  print line, 
+
+
+This will return: 
+
+Hello World  This is our new text file  and this is another line.  Why? Because we can. 
+
+
+See how much simpler that is than the previous methods?
+
+Using the File Write Method
+
+
+One thing you’ll notice about the file write method is that it only requires a single parameter, which is the string you want to be written. 
+
+This method is used to add information or content to an existing file. To start a new line after you write data to the file, you can add an EOL character.
+
+ 
+file = open(“testfile.txt”, “w”)
+file.write(“This is a test”)  file.write(“To add more lines.”)
+file.close()
+
+
+Obviously, this will amend our current file to include the two new lines of text. There’s no need to show output.
+
+Closing a File
+
+
+When you’re done working, you can use the fh.close() command to end things. What this does is close the file completely, terminating resources in use, in turn freeing them up for the system to deploy elsewhere. 
+
+It’s important to understand that when you use the fh.close() method, any further attempts to use the file object will fail. 
+
+Notice how we have used this in several of our examples to end interaction with a file? This is good practice.
+
+File Handling in the Real World
+
+
+To help you better understand some of the methods discussed here, we’re going to offer a few examples of them being used in the real world. Feel free to copy the code and try it out for yourself in a Python interpreter (make sure you have any named files created and accessible first).
+
+Opening a text file:
+
+ 
+
+fh = open(“hello.txt”, “r”) 
+
+ 
+
+Reading a text file:  
+
+ 
+
+Fh = open(“hello.txt”, “r”)  print fh.read() 
+
+ 
+
+To read a text file one line at a time: 
+
+ 
+
+fh = open(“hello.text”, “r”)  print fh.readline() 
+
+ 
+
+To read a list of lines in a text file: 
+
+ 
+
+fh = open(“hello.txt”, “r”)  print fh.readlines() 
+
+ 
+
+To write new content or text to a file: 
+
+ 
+
+fh = open(“hello.txt”, “w”)    fh.write(“Put the text you want to add here”)  fh.write(“and more lines if need be.”)    fh.close() 
+
+ 
+
+You can also use this to write multiple lines to a file at once: 
+
+ 
+
+fh = open(“hello.txt”,”w”)  lines_of_text = [“One line of text here”, “and another line here”, “and yet another here”, “and so on and so forth”]  fh.writelines(lines_of_text)  fh.close() 
+
+ 
+
+To append a file: 
+
+ 
+
+fh = open(“hello.txt”, “a”)  fh.write(“We Meet Again World”)  fh.close 
+
+ 
+
+To close a file completely when you are done: 
+
+ 
+
+fh = open(“hello.txt”, “r”)  print fh.read()  fh.close() 
+
+ 
+
+With Statement
+
+
+You can also work with file objects using the with statement. It is designed to provide much cleaner syntax and exceptions handling when you are working with code. That explains why it’s good practice to use the with statement where applicable. 
+
+One bonus of using this method is that any files opened will be closed automatically after you are done. This leaves less to worry about during cleanup. 
+
+To use the with statement to open a file:
+
+ 
+
+with open(“filename”) as file: 
+
+ 
+
+Now that you understand how to call this statement, let’s take a look at a few examples.
+
+ 
+
+with open(“testfile.txt”) as file:   data = file.read()  do something with data 
+
+ 
+
+You can also call upon other methods while using this statement. For instance, you can do something like loop over a file object:
+
+ 
+
+with open(“testfile.txt”) as f:  for line in f:  print line, 
+
+ 
+
+You’ll also notice that in the above example we didn’t use the “file.close()” method because the with statement will automatically call that for us upon execution. It really makes things a lot easier, doesn’t it?
+
+ 
+
+Using the With Statement in the Real World
+
+
+To better understand the with statement, let’s take a look at some real world examples just like we did with the file handling functions.
+
+ 
+
+To write to a file using the with statement:
+
+ 
+
+with open(“hello.txt”, “w”) as f:  f.write(“Hello World”) 
+
+ 
+
+To read a file line by line, output into a list:
+
+ 
+
+with open(“hello.txt”) as f:  data = f.readlines() 
+
+ 
+
+This will take all of the text or content from the “hello.txt” file and store it into a string called “data”.
+
+
+Splitting Lines in a Text File
+
+
+As a final example, let’s explore a unique function that allows you to split the lines taken from a text file. What this is designed to do, is split the string contained in variable data whenever the interpreter encounters a space character.
+
+But just because we are going to use it to split lines after a space character, doesn’t mean that’s the only way. You can actually split your text using any character you wish - such as a colon, for instance.
+
+The code to do this (also using a with statement) is:
+
+ 
+
+with open(“hello.text”, “r”) as f: data = f.readlines()   for line in data: words = line.split() print words
+
+ 
+
+If you wanted to use a colon instead of a space to split your text, you would simply change line.split() to line.split(“:”).
+
+The output for this will be:
+
+ 
+
+[“hello”, “world”, “how”, “are”, “you”, “today?”] [“today”, “is”, “Saturday”]
+
+ 
+
+The reason the words are presented in this manner is because they are stored – and returned – as an array. Be sure to remember this when working with the split function.
+
+
+
