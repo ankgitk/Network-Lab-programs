@@ -1,0 +1,4 @@
+name=raw_input("Enter the message: ")
+key=input("Enter the key: ")
+print 'Cipher: ',
+print ''.join([chr(ord(i)+key) for i in name])
