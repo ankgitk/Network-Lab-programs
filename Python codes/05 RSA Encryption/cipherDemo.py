@@ -1,4 +1,4 @@
-#Demo for RSA Encryption By Shivanshu Chaudhary aka MOHMAYA
+#python3
 
 
 from math import sqrt
