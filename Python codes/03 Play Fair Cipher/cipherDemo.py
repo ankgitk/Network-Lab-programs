@@ -1,4 +1,4 @@
-#Demo for Play Fair Cipher By Shivanshu Chaudhary aka MOHMAYA
+
 
 
 def encryptor(originalDigramSet,keyMatrix):        #Function for encrypting each digram
