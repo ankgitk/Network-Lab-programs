@@ -1,4 +1,4 @@
-#Demo for Hill Cipher By Shivanshu Chaudhary aka MOHMAYA
+#python3
 
 
 def valueOfAlphabet(alphabet):
