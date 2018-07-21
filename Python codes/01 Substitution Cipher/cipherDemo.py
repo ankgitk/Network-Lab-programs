@@ -1,4 +1,4 @@
-#Demo for Substitution Cipher By Shivanshu Chaudhary aka MOHMAYA
+
 
 
 def encryptor(originalMessage):        #Function for encrypting the originalMessage
