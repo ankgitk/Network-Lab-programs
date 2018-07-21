@@ -1,6 +1,4 @@
-#Demo for Vernam Cipher By Shivanshu Chaudhary aka MOHMAYA
-
-
+#python3
 def valueOfAlphabet(alphabet):
     return ord(alphabet)
 
